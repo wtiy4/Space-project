@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <title>Space Artshop</title>
+</head>
+
+<body>
+
+    <div class="parallax-container" id="parallax">
+        <div class="layer stars" data-speed="0.1"></div>
+        <div class="layer meteor" data-speed="0.3"></div>
+        <div class="layer nebula" data-speed="0.6"></div>
+        <div class="hero-text">🚀 Space Artshop</div>
+    </div>
+
+
+
+
+    <div class="parallax" style="background-image:url(../planets/earth-day.jpg);">
+        <img src="meteor.png" id="second-meteor">
+    </div>
+
+    <div class="parallax"
+        style="background-image:
+    url('https://r4.wallpaperflare.com/wallpaper/716/131/782/earth-space-atmosphere-stars-wallpaper-c8560c4a4fccc7192e40b91202c9eb60.jpg');">
+        <a href="blog.html" class="visit">Visit the blog for exciting inforamtion</a>
+    </div>
+
+
+
+
+    <script>
+        const layers = document.querySelectorAll('.layer');
+
+        document.getElementById('parallax').addEventListener('mousemove', (el) => {
+            const x = (window.innerWidth / 2 - el.pageX) / 40;
+            const y = (window.innerHeight / 2 - el.pageY) / 40;
+
+            layers.forEach(layer => {
+                const speed = layer.getAttribute('data-speed');
+                const moveX = x * speed;
+                const moveY = y * speed;
+                layer.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            });
+        });
+
+        const meteor = document.querySelector('.meteor');
+
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const offsetY = scrollY * 0.6;
+            const offsetX = -scrollY * 0.8;
+
+            meteor.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+        });
+
+
+        // const meteor2 = document.getElementById('second-metor');
+
+        // window.addEventListener('scroll', () => {
+        //     const scrollY = window.scrollY;
+        //     const offsetY = scrollY * 0.6;
+        //     const offsetX = scrollY * 0.8;
+
+        //     meteor2.style.transform = `translate(${offsetX}px, ${offsetY}px) rotate(240deg)`;
+        // });
+
+
+        const secondMeteor = document.getElementById('second-meteor');
+
+        window.addEventListener('scroll', () => {
+            const rect = secondMeteor.getBoundingClientRect();
+
+            if (rect.top < window.innerHeight * 0.6 && rect.bottom > 0) {
+                const scrollY = window.scrollY;
+                const offsetY = scrollY * 0.5;
+                const offsetX = scrollY * 0.5;
+
+                secondMeteor.style.opacity = 1;
+                secondMeteor.style.transform =
+                    `translate(${offsetX}px, ${offsetY}px) rotate(240deg)`;
+            } else {
+                secondMeteor.style.opacity = 0;
+            }
+        });
+    </script>
+</body>
+
+</html>

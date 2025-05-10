@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Space time-machine</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/10928/10928949.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <div class="hamburger" onclick="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </div>
+
+    <img class="logo" src="./textures/icon Background Removed.png"></img>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="./gallery/gallery.html"><i class="fas fa-home"></i>معرض الفضاء</a></li>
+      <li><a href="تسجيل/signup.html"><i class="fas fa-user"></i> سجل دخول </a></li>
+      <li><a href="تسجيل/welcome.html"><i class="fas fa-cogs"></i>إعدادات الحساب</a></li>
+      <li><a href="./gallery/blog.html"><i class="fas fa-book"></i>المدونة </a></li>
+      <li id="username-display" style="color: #00ffff; font-weight: bold;"><a href="تسجيل/welcome.html"></a></li>
+      <li id="logout-button" style="cursor: pointer; color: #ff6f61;"></li>
+
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h1>🛸عبقور لخدمات البحث والنقل عبر الزمن </h1>
+    <p>أدخل السنة التي تريد السفر إليها:</p>
+
+    <input type="number" id="yearInput" placeholder="!ابحث عن زمنك المفضل">
+    <br>
+    <button onclick=" travelThroughTime()">🚀 سافر عبر الزمن</button>
+    <button onclick="backToFuture()">🔙 العودة للحاضر</button>
+    <button onclick="randomTravel()">🔀 سفر عشوائي</button>
+    <button onclick="clearDate()">مسح التاريخ</button>
+
+
+    <div id="countdown"></div>
+    <div id="output"></div>
+    <div class="tags">
+      <span id="success" onclick="document.getElementById('yearInput').value = 1957">1957</span>
+      <span id="success" onclick="document.getElementById('yearInput').value = 1958">1958</span>
+      <span id="success" onclick="document.getElementById('yearInput').value = 1961">1961</span>
+      <span id="success" onclick="document.getElementById('yearInput').value = 1969">1969</span>
+      <span id="success" onclick="document.getElementById('yearInput').value = 1970">1970</span>
+      <span id="success" onclick="document.getElementById('yearInput').value = 1985">1985</span>
+      <span id="success" onclick="document.getElementById('yearInput').value = 1990">1990</span>
+      <span id="success" onclick="document.getElementById('yearInput').value = 1998">1998</span>
+      <span id="success" onclick="document.getElementById('yearInput').value = 2020">2020</span>
+      <span id="success" onclick="document.getElementById('yearInput').value = 2021">2021</span>
+
+      <h3>- تواريخ قد تهمك - </h3>
+    </div>
+  </div>
+
+  <img id="timeImage" src="" alt="صورة الحقبة الزمنية"
+    style="width: 50%; margin: 30px auto; border-radius: 12px; display: none;">
+
+  <audio id="travelSound" src="./sounds/countdown.wav" preload="auto"></audio>
+  <audio id="travelBack" src="./sounds/alien.wav" preload="auto"></audio>
+  <audio id="error" src="./sounds/error.mp3" preload="auto"></audio>
+  <audio id="successSound" src="./sounds/success.wav" preload="auto"></audio>
+
+
+  <script src="main.js"> </script>
+  <script>
+    window.onload = function () {
+      const storedUser = JSON.parse(localStorage.getItem('spaceUser'));
+      const usernameDisplay = document.getElementById('username-display');
+      const logoutButton = document.getElementById('logout-button');
+
+      if (storedUser && storedUser.username) {
+        usernameDisplay.textContent = `👨‍🚀 ${storedUser.username}`;
+        logoutButton.innerHTML = `<i class="fas fa-sign-out-alt"></i> تسجيل خروج`;
+
+        logoutButton.onclick = function () {
+          localStorage.removeItem('spaceUser');
+          window.location.href = 'تسجيل/signup.html';
+        };
+      }
+    };
+  </script>
+
+</body>
+
+</html>

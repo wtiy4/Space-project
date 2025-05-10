@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8" />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/10928/10928949.png" type="image/x-icon">
+    <style>
+        body {
+            height: 100vh;
+            margin: 0;
+            font-family: 'Orbitron', sans-serif;
+            background: radial-gradient(ellipse at bottom, #0b0f2a 0%, #000000 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/stardust.png');
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        .welcome-container {
+            position: relative;
+            z-index: 1;
+            padding: 50px 20px;
+        }
+
+        h1 {
+            color: #00ffff;
+            font-size: 36px;
+        }
+
+        .user-details {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            margin: 50px auto;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+        }
+
+        .user-details p {
+            font-size: 18px;
+        }
+
+        .settings-link {
+            color: #00ffff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .settings-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="stars"></div>
+    <div class="welcome-container">
+
+        <div class="user-details">
+            <p id="greeting"></p>
+            <p id="hobbiesDisplay"></p>
+            <a href="settings.html" class="settings-link">تعديل الإعدادات</a>
+            <br>
+            <a href="../index.html" class="settings-link">اذهب للصفحة الرئيسية</a>
+
+        </div>
+    </div>
+
+    <script>
+        const user = JSON.parse(localStorage.getItem('spaceUser'));
+        const greeting = document.getElementById('greeting');
+        const hobbiesDisplay = document.getElementById('hobbiesDisplay');
+
+        if (user) {
+            greeting.textContent = `مرحبًا، ${user.username}!`;
+
+            if (user.hobbies) {
+                hobbiesDisplay.textContent = `هواياتك: ${user.hobbies}`;
+            } else {
+                hobbiesDisplay.textContent = 'لم تقم بإضافة أي هوايات بعد.';
+            }
+        } else {
+            greeting.textContent = 'أنت غير مسجل بعد. يرجى تسجيل الدخول أولاً.';
+        }
+    </script>
+</body>
+
+</html>

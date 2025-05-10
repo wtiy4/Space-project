@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    color: white;
+    background-color: #111;
+    cursor: url(rocket.png), auto;
+    direction: rtl;
+    overflow-x: hidden;
+}
+
+.parallax-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    perspective: 1000px;
+}
+
+.layer {
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    top: -10%;
+    left: -10%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: transform 0.1s ease-out;
+    pointer-events: none;
+
+}
+
+.stars {
+    background-image: url();
+    z-index: 1;
+}
+
+.meteor {
+    background-image: url(meteor.png);
+    position: absolute;
+    top: 0;
+    z-index: 8;
+    background-size: 30%
+}
+
+
+
+.nebula {
+    background-image: url("https://r4.wallpaperflare.com/wallpaper/716/131/782/earth-space-atmosphere-stars-wallpaper-c8560c4a4fccc7192e40b91202c9eb60.jpg");
+    z-index: 3;
+}
+
+/* .parallax img {
+    left: 0;
+    position: absolute;
+    transform: rotate(240deg);
+} */
+
+#second-meteor {
+    position: absolute;
+    transform: rotate(240deg);
+    top: 0;
+    left: 0%;
+    width: 30%;
+    z-index: 5;
+    pointer-events: none;
+    transition: transform 0.2s ease-out, opacity 0.5s ease;
+}
+
+
+.hero-text {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    font-size: 4rem;
+    text-shadow: 0 0 10px white;
+    z-index: 1000;
+}
+
+
+
+
+.content p {
+    line-height: 1.8;
+    margin-bottom: 40px;
+}
+
+.content2 {
+    height: 100vh;
+    padding: 100px 20px;
+    background: linear-gradient(to left, #111, #5400c9);
+
+}
+
+
+.content2 p {
+    line-height: 1.8;
+    max-width: 700px;
+    margin-bottom: 40px;
+}
+
+.parallax {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.content {
+    padding: 40px 20px;
+    color: white;
+    font-size: 2rem;
+
+}
+
+.section {
+    height: 100vh;
+}
+
+.visit {
+    font-size: 34px;
+    border-radius: 9px;
+    text-decoration: none;
+    color: white;
+    position: absolute;
+    padding: 20px 40px;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(10, 49, 86);
+    border: 2px solid white;
+}

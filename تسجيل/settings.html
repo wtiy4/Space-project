@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Space Settings</title>
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/10928/10928949.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Orbitron', sans-serif;
+            background: radial-gradient(ellipse at bottom, #0b0f2a 0%, #000000 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/stardust.png');
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        .settings-container {
+            position: relative;
+            z-index: 1;
+            padding: 50px 20px;
+        }
+
+        h1 {
+            color: #00ffff;
+            font-size: 36px;
+        }
+
+        .settings-box {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            margin: 50px auto;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+        }
+
+        .settings-box input,
+        .settings-box textarea,
+        .settings-box button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: none;
+            font-size: 16px;
+        }
+
+        .settings-box input,
+        .settings-box textarea {
+            background: rgba(0, 0, 0, 0.4);
+            color: white;
+        }
+
+        .settings-box button {
+            background-color: #00ffff;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .settings-box button:hover {
+            background-color: #00c2c2;
+        }
+
+        .status-message {
+            color: lime;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="stars"></div>
+    <div class="settings-container">
+        <h1>⚙️ إعدادات المستخدم</h1>
+
+        <div class="settings-box">
+            <form id="settingsForm">
+                <input type="text" id="username" placeholder="اسم المستخدم" required />
+                <input type="password" id="password" placeholder="كلمة المرور" required />
+                <textarea id="hobbies" placeholder="الهوايات" rows="4"></textarea>
+                <button type="submit">💾 حفظ التعديلات</button>
+                <p id="status" class="status-message"></p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const user = JSON.parse(localStorage.getItem('spaceUser'));
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const hobbiesInput = document.getElementById('hobbies');
+        const statusMessage = document.getElementById('status');
+
+        if (user) {
+            usernameInput.value = user.username;
+            passwordInput.value = user.password;
+            hobbiesInput.value = user.hobbies || '';
+        }
+
+        document.getElementById('settingsForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const updatedUser = {
+                username: usernameInput.value,
+                password: passwordInput.value,
+                hobbies: hobbiesInput.value
+            };
+
+            localStorage.setItem('spaceUser', JSON.stringify(updatedUser));
+
+            statusMessage.textContent = '✅ تم حفظ التعديلات بنجاح!';
+        });
+    </script>
+</body>
+
+</html>
