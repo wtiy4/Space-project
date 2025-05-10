@@ -51,7 +51,7 @@ body {
 
 
 .nebula {
-    background-image: url("https://r4.wallpaperflare.com/wallpaper/716/131/782/earth-space-atmosphere-stars-wallpaper-c8560c4a4fccc7192e40b91202c9eb60.jpg");
+    background-image: url(./imgs/earth.jpg);
     z-index: 3;
 }
 
